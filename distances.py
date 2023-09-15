@@ -20,9 +20,9 @@ def lowestCommonAncestor(node, source, destination):
     return node
 
   if source < node.value and destination < node.value:
-    return LCA(node.left, source, destination)
+    return lowestCommonAncestor(node.left, source, destination)
   elif source > node.value and destination > node.value:
-    return LCA(node.right, source, destination)
+    return lowestCommonAncestor(node.right, source, destination)
   return node
   
 def distance(node, source, destination):
