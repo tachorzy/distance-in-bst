@@ -25,18 +25,19 @@ def lowestCommonAncestor(node, source, destination):
     return lowestCommonAncestor(node.right, source, destination)
   return node
   
-def distance(node, source, destination):
-  def getLevel(node, key, level: int) -> int:
-    if node is None:
-      return -1
-    if node.value == key:
-      return level
-  
-    if key < node.value:
-      return getLevel(node.left, key, level+1)
-    elif key > node.value:
-      return getLevel(node.right, key, level+1)
+def getLevel(node, key, level: int) -> int:
+  if node is None:
+    return -1
+  if node.value == key:
+    return level
 
+  if key < node.value:
+    return getLevel(node.left, key, level+1)
+  elif key > node.value:
+    return getLevel(node.right, key, level+1)
+
+
+def distance(node, source, destination):
   ancestor = lowestCommonAncestor(node, source, destination)
   distanceFromSource: int = getLevel(ancestor, source, 0)
   distanceFromDestination: int = getLevel(ancestor, destination, 0)
