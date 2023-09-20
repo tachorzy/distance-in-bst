@@ -36,7 +36,6 @@ def getLevel(node, key, level: int) -> int:
   elif key > node.value:
     return getLevel(node.right, key, level+1)
 
-
 def distance(node, source, destination):
   ancestor = lowestCommonAncestor(node, source, destination)
   distanceFromSource: int = getLevel(ancestor, source, 0)
